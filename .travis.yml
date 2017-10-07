@@ -1,0 +1,8 @@
+language: nodejs
+node_js: 8
+branches:
+    only:
+        - master
+        - develop
+notifications:
+  irc: "chat.freenode.net#geosocio"
