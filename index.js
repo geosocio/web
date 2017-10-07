@@ -8,7 +8,7 @@ import App from 'app/components/app';
 import reducer from 'app/reducers/index';
 import { createEpicMiddleware } from 'redux-observable';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import epic from './src/epics';
+import epic from './src/epics/index';
 import './styles/styles.scss';
 
 function main() {
