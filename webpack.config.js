@@ -6,17 +6,19 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
 const extractSass = new ExtractTextPlugin({
-  filename: 'style.css',
+  filename: 'styles/[name].css',
   disable: process.env.NODE_ENV !== 'production',
 });
 
 const config = {
   entry: './index.js',
   output: {
-    filename: '[name].[chunkhash].js',
+    filename: 'scripts/[name].js',
     path: path.resolve(__dirname, 'html'),
+    publicPath: '/',
   },
   devtool: process.env.NODE_ENV === 'production' ? 'source-map' : 'cheap-module-eval-source-map',
   resolve: {
@@ -60,6 +62,13 @@ const config = {
     }),
     new HtmlWebpackPlugin({
       title: 'GeoSoc.io',
+      inject: 'head',
+      template: './index.ejs',
+      hash: true,
+      xhtml: true,
+    }),
+    new ScriptExtHtmlWebpackPlugin({
+      defaultAttribute: 'async',
     }),
   ],
 };
