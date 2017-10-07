@@ -24,6 +24,8 @@ function main() {
     composeWithDevTools(applyMiddleware(router, epicMiddleware)),
   );
 
+  const duh = 'what';
+
   ReactDOM.render(
     <Provider store={store}>
       <ConnectedRouter history={history}>

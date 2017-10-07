@@ -4,6 +4,8 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 const extractSass = new ExtractTextPlugin({
   filename: 'style.css',
@@ -13,8 +15,8 @@ const extractSass = new ExtractTextPlugin({
 const config = {
   entry: './index.js',
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'html/bundles'),
+    filename: '[name].[chunkhash].js',
+    path: path.resolve(__dirname, 'html'),
   },
   devtool: process.env.NODE_ENV === 'production' ? 'source-map' : 'cheap-module-eval-source-map',
   resolve: {
@@ -48,12 +50,16 @@ const config = {
   },
   plugins: [
     extractSass,
+    new CleanWebpackPlugin(['./html']),
     new webpack.DefinePlugin({
       APP_ENV: JSON.stringify(process.env.APP_ENV),
       // @see https://facebook.github.io/react/docs/optimizing-performance.html#webpack
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       },
+    }),
+    new HtmlWebpackPlugin({
+      title: 'GeoSoc.io',
     }),
   ],
 };
