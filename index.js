@@ -8,7 +8,7 @@ import App from 'app/components/app';
 import reducer from 'app/reducers/index';
 import { createEpicMiddleware } from 'redux-observable';
 import { composeWithDevTools } from 'redux-devtools-extension';
-// import epic from './src/epics';
+import epic from './src/epics';
 import './styles/styles.scss';
 
 function main() {
@@ -16,13 +16,12 @@ function main() {
   const history = createHistory();
   // Build the middleware for intercepting and dispatching navigation actions
   const router = routerMiddleware(history);
-  // const epicMiddleware = createEpicMiddleware(epic);
+  const epicMiddleware = createEpicMiddleware(epic);
   // Add the reducer to your store on the `router` key
   // Also apply our middleware for navigating
   const store = createStore(
     reducer,
-     composeWithDevTools(applyMiddleware(router))
-    // composeWithDevTools(applyMiddleware(router, epicMiddleware)),
+    composeWithDevTools(applyMiddleware(router, epicMiddleware)),
   );
 
   ReactDOM.render(
@@ -31,7 +30,8 @@ function main() {
         <App />
       </ConnectedRouter>
     </Provider>,
-    document.getElementById('root')
+    // eslint-disable-next-line no-undef
+    document.getElementById('root'),
   );
 }
 
