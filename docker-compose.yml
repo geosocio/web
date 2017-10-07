@@ -1,0 +1,19 @@
+version: '3'
+services:
+  web:
+    image: nginx:1.13
+    volumes:
+      - ./:/usr/share/nginx:cached
+    networks:
+      - default
+      - geosocio
+  build:
+    image: node:8
+    working_dir: /code
+    volumes:
+      - ./:/code:cached
+    command: 'npm run watch'
+networks:
+  geosocio:
+    external:
+      name: geosocio_default

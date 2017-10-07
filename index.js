@@ -24,7 +24,7 @@ function main() {
     composeWithDevTools(applyMiddleware(router, epicMiddleware)),
   );
 
-  const duh = 'what';
+  const duh = 'really';
 
   ReactDOM.render(
     <Provider store={store}>
