@@ -55,7 +55,6 @@ const config = {
           {
             loader: 'file-loader',
             options: {
-              // @TODO Fix this!
               outputPath: './images/',
             },
           },

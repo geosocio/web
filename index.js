@@ -4,10 +4,10 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
-import App from './src/components/app';
-import reducer from './src/reducers/index';
 import { createEpicMiddleware } from 'redux-observable';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import App from './src/components/app';
+import reducer from './src/reducers/index';
 import epic from './src/epics/index';
 import './styles/styles.scss';
 
