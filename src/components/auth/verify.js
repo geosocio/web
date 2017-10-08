@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import Submit from 'app/components/fields/submit';
 import FormError from 'app/components/fields/form-error';
 import FieldError from 'app/components/fields/field-error';
-import LoginEntity from 'app/entities/user/login';
+import VerifyEntity from 'app/entities/user/verify';
 import fieldClassName from 'app/utils/field-class-name';
 
-export default class Login extends React.Component {
+export default class Verify extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -26,22 +26,25 @@ export default class Login extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="form-group">
-          <label htmlFor="login-value">Email</label>
+          <label htmlFor="login-value">Code</label>
+          <small className="text-muted">
+            &nbsp;The code from the email you were just sent.
+          </small>
           <input
-            id="login-value"
-            type="email"
-            className={`form-control-lg ${fieldClassName('value', this.props.login.error)}`}
-            name="value"
-            disabled={this.props.login.status === 'saving'}
-            value={this.props.login.value || ''}
+            id="verify-code"
+            type="number"
+            className={`form-control-lg ${fieldClassName('code', this.props.verify.error)}`}
+            name="code"
+            disabled={this.props.verify.status === 'saving'}
+            value={this.props.verify.code || ''}
             onChange={this.handleChange}
           />
-          <FieldError path="value" error={this.props.login.error} />
+          <FieldError path="code" error={this.props.verify.error} />
         </div>
-        <FormError error={this.props.login.error} />
+        <FormError error={this.props.verify.error} />
         <Submit
           className="btn-primary btn-block btn-lg"
-          status={this.props.login.status}
+          status={this.props.verify.status}
           value="Continue"
         />
       </form>
@@ -49,8 +52,8 @@ export default class Login extends React.Component {
   }
 }
 
-Login.propTypes = {
+Verify.propTypes = {
   set: PropTypes.func.isRequired,
   send: PropTypes.func.isRequired,
-  login: PropTypes.instanceOf(LoginEntity).isRequired,
+  verify: PropTypes.instanceOf(VerifyEntity).isRequired,
 };

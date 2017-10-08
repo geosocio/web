@@ -25,7 +25,6 @@ export default (action$, store) => (
         },
       }).flatMap(ajaxResponse => (
         Observable.concat(
-          Observable.of(push('/login/verify')),
           Observable.of(VerifyActions.updateVerify(new Verify(ajaxResponse.response))),
           Observable.of(LoginActions.resetLogin()),
         )

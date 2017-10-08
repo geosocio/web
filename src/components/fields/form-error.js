@@ -16,7 +16,7 @@ const FormError = ({ error }) => {
   }
 
   return (
-    <div className="alert alert-danger mb-0" role="alert">
+    <div className="alert alert-danger" role="alert">
       {code} {error.message}
     </div>
   );

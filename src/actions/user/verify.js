@@ -12,7 +12,7 @@ export function setVerifyCode(code) {
   };
 }
 
-export function setLoginError(error) {
+export function setVerifyError(error) {
   return {
     type: 'VERIFY_SET_ERROR',
     error,

@@ -1,8 +1,8 @@
 import { Record } from 'immutable';
 
-export default class Verify extends Record({
-  token: undefined,
+export default class User extends Record({
+  id: undefined,
   code: undefined,
   error: undefined,
   status: 'clean',
-}, 'Verify') {}
+}, 'User') {}

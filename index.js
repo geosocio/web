@@ -1,3 +1,4 @@
+/* eslint-env browser */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
@@ -30,7 +31,6 @@ function main() {
         <App />
       </ConnectedRouter>
     </Provider>,
-    // eslint-disable-next-line no-undef
     document.getElementById('root'),
   );
 }
