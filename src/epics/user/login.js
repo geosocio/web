@@ -1,7 +1,6 @@
 import { Observable } from 'rxjs';
 import 'rxjs/add/observable/dom/ajax';
 import 'rxjs/add/operator/map';
-import { push } from 'react-router-redux';
 import Verify from 'app/entities/user/verify';
 import EntityError from 'app/entities/error';
 import * as LoginActions from 'app/actions/user/login';
