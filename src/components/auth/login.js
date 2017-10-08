@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Submit from 'app/components/fields/submit';
+import FormError from 'app/components/fields/form-error';
+import FieldError from 'app/components/fields/field-error';
 import logo from 'images/geosocio-center.png';
 import LoginEntity from 'app/entities/user/login';
+import fieldClassName from 'app/utils/field-class-name';
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -34,13 +38,19 @@ export default class Login extends React.Component {
               <input
                 id="login-value"
                 type="email"
-                className="form-control"
+                className={`form-control-lg ${fieldClassName('value', this.props.login.error)}`}
                 name="value"
                 value={this.props.login.value || ''}
                 onChange={this.handleChange}
               />
+              <FieldError path="value" error={this.props.login.error} />
             </div>
-            <button type="submit" className="btn btn-primary btn-block" disabled={this.props.login.status !== 'dirty'}>Continue</button>
+            <FormError error={this.props.login.error} />
+            <Submit
+              className="btn-primary btn-block btn-lg"
+              status={this.props.login.status}
+              value="Continue"
+            />
           </form>
         </div>
       </div>

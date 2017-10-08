@@ -5,6 +5,13 @@ export function setLogin(value) {
   };
 }
 
+export function setLoginError(error) {
+  return {
+    type: 'LOGIN_SET_ERROR',
+    error,
+  };
+}
+
 export function resetLogin() {
   return {
     type: 'LOGIN_RESET',
