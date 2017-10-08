@@ -1,3 +1,14 @@
 @import '~bootstrap/scss/_functions';
 @import "~bootstrap/scss/_variables";
+
+$theme-colors: map_merge($theme-colors, (
+  primary: #6A498D
+));
+
 @import "~bootstrap/scss/bootstrap";
+
+html,
+body,
+#root {
+    height: 100%;
+}
