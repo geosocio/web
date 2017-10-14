@@ -2,7 +2,18 @@ import { Record } from 'immutable';
 
 export default class User extends Record({
   id: undefined,
-  code: undefined,
-  error: undefined,
+  locationId: undefined,
   status: 'clean',
-}, 'User') {}
+}, 'User') {
+  equals(other) {
+    if (!(other instanceof User)) {
+      return super.equals(other);
+    }
+
+    if (typeof other.id === 'undefined' || typeof this.id === 'undefined') {
+      return super.equals(other);
+    }
+
+    return other.id === this.id;
+  }
+}

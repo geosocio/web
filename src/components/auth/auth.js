@@ -2,14 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Verify from 'app/entities/user/verify';
+import User from 'app/entities/user/user';
 import logo from 'images/geosocio-center.png';
+import LocationContainer from './location.container';
 import LoginContainer from './login.container';
 import VerifyContainer from './verify.container';
 
-const Auth = ({ verify }) => {
+const Auth = ({ user, verify }) => {
   let step;
 
-  if (verify.token) {
+  if (user) {
+    if (!user.location) {
+      step = <LocationContainer user={user} />;
+    }
+  } else if (verify.token) {
     step = <VerifyContainer />;
   } else {
     step = <LoginContainer />;
@@ -32,7 +38,12 @@ const Auth = ({ verify }) => {
 };
 
 Auth.propTypes = {
+  user: PropTypes.instanceOf(User),
   verify: PropTypes.instanceOf(Verify).isRequired,
+};
+
+Auth.defaultProps = {
+  user: undefined,
 };
 
 export default Auth;

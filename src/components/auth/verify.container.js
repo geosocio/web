@@ -4,7 +4,7 @@ import Verify from './verify';
 
 export default connect(
   state => ({
-    verify: state.user.verify,
+    verify: state.user.auth.verify,
   }),
   dispatch => ({
     set: value => dispatch(VerifyActions.setVerifyCode(value)),

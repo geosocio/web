@@ -14,6 +14,7 @@ export default (state = new Verify(), action) => {
       return state.set('status', 'dirty').set('error', undefined).set('code', action.code);
     case 'VERIFY_SEND':
       return state.set('status', 'saving').set('error', undefined);
+    case 'TOKEN_SET':
     case 'VERIFY_RESET':
       return new Verify();
     default:

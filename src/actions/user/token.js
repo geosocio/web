@@ -5,6 +5,13 @@ export function setToken(token) {
   };
 }
 
+export function addToken(token) {
+  return {
+    type: 'TOKEN_ADD',
+    token,
+  };
+}
+
 export function removeToken() {
   return {
     type: 'TOKEN_REMOVE',

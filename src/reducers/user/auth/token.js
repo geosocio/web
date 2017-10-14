@@ -15,9 +15,6 @@ export default (state = '', action) => {
       }
       return '';
     default:
-      if (!state && window) {
-        return window.localStorage.getItem('token') || '';
-      }
       return state;
   }
 };

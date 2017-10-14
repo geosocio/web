@@ -28,7 +28,6 @@ export function verifySend(action$, store) {
         Observable.concat(
           Observable.of(push('/')),
           Observable.of(TokenActions.setToken(ajaxResponse.response.token)),
-          Observable.of(VerifyActions.resetVerify()),
         )
       )).catch(ajaxError => (
         Observable.of(VerifyActions.setVerifyError(new EntityError(ajaxError.xhr.response)))

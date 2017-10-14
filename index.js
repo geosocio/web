@@ -10,6 +10,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import App from './src/components/app';
 import reducer from './src/reducers/index';
 import epic from './src/epics/index';
+import * as TokenActions from './src/actions/user/token';
 import './styles/styles.scss';
 
 function main() {
@@ -24,6 +25,11 @@ function main() {
     reducer,
     composeWithDevTools(applyMiddleware(router, epicMiddleware)),
   );
+
+  const token = window.localStorage.getItem('token');
+  if (token) {
+    store.dispatch(TokenActions.addToken(token));
+  }
 
   ReactDOM.render(
     <Provider store={store}>
