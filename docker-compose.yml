@@ -13,12 +13,13 @@ services:
     build: ./
     image: geosocio/web
     volumes:
+      # Copying ./html causes weird permission issues.
       - ./:/usr/share/nginx:cached
     depends_on:
       - api
-  watch:
+  build:
     image: node:8
     working_dir: /app
     volumes:
       - ./:/app:cached
-    command: 'npm run watch'
+    command: './bin/watch'
