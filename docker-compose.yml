@@ -9,6 +9,10 @@ services:
       - web
   api:
     image: geosocio/core
+    env_file:
+      - .env
+    volumes:
+      - database:/var/www/var/data
   web:
     build: ./
     image: geosocio/web
@@ -23,3 +27,5 @@ services:
     volumes:
       - ./:/app:cached
     command: './bin/watch'
+volumes:
+  database:

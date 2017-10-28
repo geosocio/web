@@ -9,7 +9,7 @@ import * as VerifyActions from 'app/actions/user/verify';
 export default (action$, store) => (
   action$.ofType('LOGIN_SEND')
     .flatMap(() => {
-      let { login } = store.getState().user;
+      let { login } = store.getState().user.auth;
 
       // Prepare takedown for saving.
       login = login.set('status', undefined).set('error', undefined);
