@@ -11,7 +11,7 @@ import * as VerifyActions from 'app/actions/user/verify';
 export function verifySend(action$, store) {
   return action$.ofType('VERIFY_SEND')
     .flatMap(() => {
-      let { verify } = store.getState().user;
+      let { verify } = store.getState().user.auth;
 
       // Prepare takedown for saving.
       verify = verify.set('status', undefined).set('error', undefined);
